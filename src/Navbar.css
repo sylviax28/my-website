@@ -1,0 +1,41 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background-color: #26382540;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.navbar-logo {
+  font-family: 'Redaction', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: #263825;
+  cursor: pointer;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  color: #263825;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.navbar-links li:hover {
+  opacity: 0.8;
+}
