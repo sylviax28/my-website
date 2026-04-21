@@ -183,7 +183,7 @@
 
 .typewriter-text {
   font-size: 1.2rem;
-  color: #56575890;
+  color: #263825;
   margin: 0.75rem 0 0 0;
   min-height: 1.8rem;
   letter-spacing: 0.05em;
@@ -192,7 +192,7 @@
 
 .cursor {
   animation: blink 0.75s step-end infinite;
-  color: #8f969d;
+  color: #263825;
 }
 
 @keyframes blink {
@@ -805,12 +805,146 @@
 }
 
 @media (max-width: 900px) {
+  .home {
+    padding: 5.5rem 1.25rem 2rem;
+    min-height: 100dvh;
+    box-sizing: border-box;
+  }
+
+  .intro-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .introp1,
+  .introp2 {
+    font-size: 1.25rem;
+  }
+
+  .typewriter-text {
+    font-size: 1.05rem;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+
+  .scroll-down-line {
+    height: 72px;
+  }
+
+  .about {
+    padding: 2rem 1.25rem 3rem;
+    gap: 2rem;
+  }
+
+  .about-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .about-text {
+    width: 100%;
+    max-width: 36rem;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+  }
+
+  .digicam-wrapper {
+    width: 100%;
+    max-width: min(380px, 100%);
+    margin: 0 auto;
+  }
+
+  .digicam-hint {
+    margin: 2rem 0 -3rem 0;
+    margin-left: 0;
+    max-width: 100%;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+
+  .photo-deck-column {
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .photo-deck-hint {
+    margin-left: 0;
+    text-align: center;
+    max-width: 100%;
+    padding: 0 0.75rem;
+  }
+
+  .photo-deck-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .photo-deck-aside {
+    margin-left: 0;
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .photo-deck-aside p {
+    font-size: 1.05rem;
+  }
+
+  .photo-stack-window {
+    width: min(100%, 320px);
+    min-height: 340px;
+  }
+
+  .photo-stack {
+    min-height: 340px;
+  }
+
+  .photo-stack-card {
+    width: min(248px, 85vw);
+    height: 288px;
+  }
+
   .projects {
-    padding: 2rem 2rem 3rem 2rem;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  .projects h1,
+  .projects > p {
+    text-align: center;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card-inner {
+    min-height: auto;
+  }
+
+  .contact {
+    padding: 3rem 1.25rem 5rem;
+  }
+
+  .contact::before {
+    width: min(88vw, 520px);
+  }
+
+  .contact-eyes {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    transform: scale(0.92);
+    transform-origin: bottom right;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    padding: 1.25rem;
+    box-sizing: border-box;
   }
 }
 
