@@ -160,8 +160,8 @@ function About() {
         <div className="about-text">
           <h1>About Me</h1>
           <p>Hi! My name is Sylvia and I'm currently a 2nd year Computer Science student at the University of Toronto, specializing in software engineering with a minor in statistics.
-            I'm passionate about building products that have a positive, tangible impact on the people around me.</p>
-          <p>I also have 3 dogs named Flash, Whiskey, and Bailey, the first one being named after the sloth from Zootopia and the other two being named after alcohol. They are not the brightest in town but they are my pride and joy.</p>
+            I'm passionate about building products that have a positive, tangible impact on the people around me. I'm currently interning at Alida Inc as a Software Developer, and am always open to new opportunties to create change!</p>
+          <p>I also have 3 dogs named Flash, Whiskey, and Bailey, who are my pride and joy. If I were to ever get another pet, I'd get a sausage dog. and maybe also a ferret.</p>
         </div>
         <div className="digicam-wrapper">
           <p className="digicam-hint">Click on the camera's arrow buttons to see some pics!</p>
@@ -222,10 +222,10 @@ function About() {
           <div className="photo-deck-aside">
             <p>
               In my free time, I love going downtown to cafes to try new drinks and desserts or go thrifting! I love exploring the city and always am down something new. My eventual goal is be able to navigate downtown without google maps.
-              I've also been wanting to play Persona 5 or Tomadochi Life for a little while now..
+              I've also been wanting to get myself a Switch so I can play Persona 5 or Tomadochi Life for a little while now..
             </p>
             <p>
-              Each time I go downtown, I love trying a new restaurant or cafe but my favourite has to be Bigway and Coco (I'm a little basic).
+              Each time I go downtown, I love trying a new restaurant or cafe! Sometimes I like to visit popular ones on tiktok but othertimes, I enjoy accidentally stumbling upon a new one. My favourite's though, have to be Bigway and Coco. I also really enjoy matcha and am thinking of buying myself some matcha powder to start making some myself..
             </p>
           </div>
         </div>

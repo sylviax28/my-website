@@ -15,7 +15,18 @@ function Home() {
   const [animateSvg, setAnimateSvg] = useState(false)
   const [displayText, setDisplayText] = useState('')
   const [showCursor, setShowCursor] = useState(false)
+  const [poppedBubbles, setPoppedBubbles] = useState({})
   const typewriterStarted = useRef(false)
+  const bubbles = [
+    { id: 1, className: 'home-bubble-1' },
+    { id: 2, className: 'home-bubble-2' },
+    { id: 3, className: 'home-bubble-3' },
+    { id: 4, className: 'home-bubble-4' },
+    { id: 5, className: 'home-bubble-5' },
+    { id: 6, className: 'home-bubble-6' },
+    { id: 7, className: 'home-bubble-7' },
+    { id: 8, className: 'home-bubble-8' },
+  ]
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -31,6 +42,7 @@ function Home() {
       }
     }, '+=3.5')
     tl.to('.about-me-button', { opacity: 1, duration: 0.8 }, '<')
+    tl.to('.scroll-down-indicator', { opacity: 1, duration: 0.8 }, '<')
   }, [])
 
   function startTypewriter() {
@@ -66,8 +78,25 @@ function Home() {
     tick()
   }
 
+  const popBubble = (id) => {
+    if (poppedBubbles[id]) return
+    setPoppedBubbles((prev) => ({ ...prev, [id]: true }))
+    window.setTimeout(() => {
+      setPoppedBubbles((prev) => ({ ...prev, [id]: false }))
+    }, 700)
+  }
+
   return (
     <div id="home" className="home">
+      <div className="home-bubbles" aria-hidden="true">
+        {bubbles.map((bubble) => (
+          <span
+            key={bubble.id}
+            className={`home-bubble ${bubble.className}${poppedBubbles[bubble.id] ? ' is-popped' : ''}`}
+            onClick={() => popBubble(bubble.id)}
+          />
+        ))}
+      </div>
       <div className="intro-row">
         <p className="introp1">hi,</p>
         <p className="introp2">my name is</p>
@@ -75,6 +104,14 @@ function Home() {
       <SylviaXuSignature animate={animateSvg} />
       <p className="typewriter-text">{displayText}{showCursor && <span className="cursor">|</span>}</p>
       <button className="about-me-button" onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}>About Me</button>
+      <button
+        className="scroll-down-indicator"
+        onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}
+        aria-label="Scroll down to About section"
+      >
+        <span className="scroll-down-line" />
+        <span className="scroll-down-arrow">↓</span>
+      </button>
     </div>
   )
 }

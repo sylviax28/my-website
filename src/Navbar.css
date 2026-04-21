@@ -32,7 +32,8 @@
 .navbar-links li {
   color: #263825;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.45rem;
+  font-family: 'Mieszkanie9', serif;
   transition: opacity 0.2s ease-in-out;
 }
 

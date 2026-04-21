@@ -4,60 +4,66 @@ import './App.css'
 const projects = [
   {
     id: '1',
-    title: 'sk8tr',
-    imageSrc: 'https://picsum.photos/seed/portfolio1/640/480',
+    title: 'Roomtastic',
+    imageSrc: '/images/roomtastic.png',
     frontDescription:
-      'Short description of what you built, the stack you used, and what you learned. Swap this text and image for your real project.',
-    backDescription:
-      'Short description of what you built, the stack you used, and what you learned. Swap this text and image for your real project.',
+      'A 3D interior design application where users can turn furniture links into interactive 3D models and place them in a live room.',
+    technologies: ['Next.js', 'FastAPI', 'PostgreSQL', 'Three.js', 'LangChain', 'Python'],
   },
   {
     id: '2',
-    title: 'Smart Air',
-    imageSrc: 'https://picsum.photos/seed/portfolio2/640/480',
+    title: 'Sk8tr',
+    imageSrc: '/images/sk8tr.png',
     frontDescription:
-      'Short description of what you built, the stack you used, and what you learned. Swap this text and image for your real project.',
-    backDescription:
-      'Short description of what you built, the stack you used, and what you learned. Swap this text and image for your real project.',
+      'An AI-powered web app that analyzes real skating footage to detect jumps and instantly generates animated performances for any Olympic skater.',
+    technologies: ['Typescript', 'Python', 'React', 'Next.js', 'FastAPI'],
   },
   {
     id: '3',
-    title: 'Quick Cart',
-    imageSrc: 'https://picsum.photos/seed/portfolio3/640/480',
+    title: 'QuickCart',
+    imageSrc: '../images/quickcart.png',
     frontDescription:
-      'Short description of what you built, the stack you used, and what you learned. Swap this text and image for your real project.',
-    backDescription:
-      'Short description of what you built, the stack you used, and what you learned. Swap this text and image for your real project.',
+      'A mobile app that uses computer vision to track grocery items in real time and streamlines checkout with Firebase syncing and Stripe payments.',
+    technologies: ['React Native', 'Typescript', 'Python', 'Firebase'],
   },
 ]
 
-function ProjectCard({ title, imageSrc, frontDescription, backDescription }) {
-  const [flipped, setFlipped] = useState(false)
+function ProjectCard({ title, imageSrc, frontDescription, technologies = [] }) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const maxTilt = 10
+
+  const handlePointerMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+    const rotateY = (x - 0.5) * maxTilt * 2
+    const rotateX = (0.5 - y) * maxTilt * 2
+    setTilt({ x: rotateX, y: rotateY })
+  }
+
+  const resetTilt = () => {
+    setTilt({ x: 0, y: 0 })
+  }
 
   return (
     <div
-      className="project-flip-root"
-      role="button"
-      tabIndex={0}
-      aria-pressed={flipped}
-      aria-label={`${title}. ${flipped ? 'Click to show cover image' : 'Click to read description'}`}
-      onClick={() => setFlipped((f) => !f)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
-          setFlipped((f) => !f)
-        }
-      }}
+      className="project-card-root"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetTilt}
+      onBlur={resetTilt}
     >
-      <div className={`project-flip-inner ${flipped ? 'is-flipped' : ''}`}>
-        <div className="project-face project-face-front">
-          <p className="project-front-text">{frontDescription}</p>
-          <img src={imageSrc} alt="" loading="lazy" />
-          <span className="project-face-title">{title}</span>
-        </div>
-        <div className="project-face project-face-back">
-          <h2 className="project-back-title">{title}</h2>
-          <p className="project-back-text">{backDescription}</p>
+      <div
+        className="project-card-inner"
+        style={{ '--tilt-x': `${tilt.x}deg`, '--tilt-y': `${tilt.y}deg` }}
+      >
+        <img src={imageSrc} alt={`${title} project preview`} loading="lazy" className="project-card-image" />
+        <div className="project-card-content">
+          <h2 className="project-card-title">{title}</h2>
+          <p className="project-card-text">{frontDescription}</p>
+          <div className="project-card-tech">
+            <span className="project-card-tech-label">Technologies:</span>
+            <span className="project-card-tech-list">{technologies.join(' • ')}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -69,7 +75,8 @@ function Projects() {
     <div id="projects" className="projects">
       <h1>Projects</h1>
       <p>
-        These are some of the latest projects I&apos;ve worked on. You can find more on my Github
+        These are some of the latest projects I&apos;ve worked on. You can find more on my{' '}
+        <a href="https://github.com/sylviax28" target="_blank" rel="noopener noreferrer">Github</a>!
       </p>
       <div className="projects-grid">
         {projects.map((p) => (
@@ -78,7 +85,7 @@ function Projects() {
             title={p.title}
             imageSrc={p.imageSrc}
             frontDescription={p.frontDescription}
-            backDescription={p.backDescription}
+            technologies={p.technologies}
           />
         ))}
       </div>
